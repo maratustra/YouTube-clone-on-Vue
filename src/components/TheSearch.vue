@@ -1,7 +1,7 @@
 <template>
   <div class="flex w-full h-full">
     <the-search-input />
-    <the-search-button />
+    <the-search-button name="search" />
   </div>
 </template>
 
