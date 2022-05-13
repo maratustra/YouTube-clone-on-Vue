@@ -2,50 +2,8 @@
   <section class="fixed w-full xl:pl-64 md:pl-24 pt-14 bg-white bg-opacity-95 z-10">
     <div class="max-w-screen-2xl m-auto px-4 border-t border-b">
       <div class="flex py-3 space-x-3 overflow-auto text-sm whitespace-nowrap">
-        <a href="#" class="px-3 py-1 transition bg-gray-600 border border-gray-700 rounded-full hover:border-gray-200 text-white">
-          All
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Trucks
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Tools
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Machines
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Engines
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Snow
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Ships
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Roads
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Tanks
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Buildings
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Mars
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Woodworking
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Tractors
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Songs
-        </a>
-        <a href="#" class="px-3 py-1 transition bg-gray-100 border border-gray-300 rounded-full hover:border-gray-200">
-          Football
+        <a v-for="category in categories" :key="category" href="#" class="px-3 py-1 transition bg-gray-600 border border-gray-700 rounded-full hover:border-gray-200 text-white">
+          {{ category }}
         </a>
       </div>
     </div>
@@ -54,7 +12,27 @@
 
 <script>
 export default {
-  name: "TheCategories"
+  name: "TheCategories",
+  data() {
+    return {
+      categories: [
+        "All",
+        "Trucks",
+        "Machines",
+        "Engines",
+        "Snow",
+        "Ships",
+        "Roads",
+        "Tanks",
+        "Buildings",
+        "Mars",
+        "Woodworking",
+        "Tractors",
+        "Songs",
+        "Football"
+      ]
+    }
+  }
 }
 </script>
 

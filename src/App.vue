@@ -1,6 +1,6 @@
 <template>
   <the-header />
-  <TheSidebarSmall />
+  <the-sidebar-small />
   <the-sidebar />
   <the-sidebar-mobile />
   <the-categories />
