@@ -13,7 +13,7 @@
     </section>
     <section class="py-2">
       <ul>
-        <dropdown-settings-list-item :label="listItem[8].label" :with-sub-menu="listItem[8].withSubMenu" />
+        <dropdown-settings-list-item :label="listItems[8].label" :with-sub-menu="listItems[8].withSubMenu" />
       </ul>
     </section>
   </div>
