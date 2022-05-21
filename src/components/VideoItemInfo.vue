@@ -7,9 +7,7 @@
         <span>Channel Name {{ index }}</span>
         <base-icon name="checkCircle" class="w-3.5 h-3.5 ml-1" />
       </div>
-      <div>
-        {{ index }}K views &middot; {{ index }} day ago
-      </div>
+      <div v-html="summary"></div>
     </div>
     <button class="opacity-0 group-hover:opacity-100 -mt-1 ml-auto p-1 text-gray-500 hover:text-gray-700 focus:outline-none">
       <base-icon name="dotsVertical" />
@@ -24,6 +22,13 @@ export default {
   name: "VideoItemInfo",
   components: {BaseIcon},
   props: ['index'],
+
+  computed: {
+    summary() {
+      const days = this.index === 1 ? 'day' : 'days'
+      return `${this.index}K views &middot; ${this.index} ${days} ago`
+    }
+  }
 }
 </script>
 

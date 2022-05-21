@@ -1,7 +1,7 @@
 <template>
   <a href="#" class="mb-7 group">
     <video-item-thumbnail :index="index" />
-    <video-item :index="index" />
+    <video-item-info :index="index" />
   </a>
 </template>
 
