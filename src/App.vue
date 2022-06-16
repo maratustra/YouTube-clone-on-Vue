@@ -1,13 +1,13 @@
 <template>
-  <the-header @open-mobile-sidebar="openMobileSidebar" />
-  <the-sidebar-small />
-  <the-sidebar />
+  <the-header @toggle-sidebar="toggleSidebar" />
+  <the-sidebar-small :is-open="sidebarState === 'compact'" />
+  <the-sidebar :is-open="sidebarState === 'normal'" />
   <the-sidebar-mobile
       :is-open="isMobileSidebarOpen"
       @close="closeMobileSidebar"
   />
-  <the-categories />
-  <the-videos />
+  <the-categories :is-sidebar-open="sidebarState === 'normal'" />
+  <the-videos :is-sidebar-open="sidebarState === 'normal'" />
 </template>
 
 <script>
@@ -31,10 +31,28 @@ export default {
   data() {
     return {
       isMobileSidebarOpen: false,
+      sidebarState: null
+    }
+  },
+
+  mounted() {
+    if (window.innerWidth >= 768 && window.innerWidth < 1280) {
+      this.sidebarState = 'compact'
+    }
+    if (window.innerWidth >= 1280) {
+      this.sidebarState = 'normal'
     }
   },
 
   methods: {
+    toggleSidebar() {
+      if (window.innerWidth >= 1280) {
+        this.sidebarState = this.sidebarState === 'normal' ? 'compact' : 'normal'
+      } else {
+        this.openMobileSidebar()
+      }
+    },
+
     openMobileSidebar() {
       this.isMobileSidebarOpen = true
     },

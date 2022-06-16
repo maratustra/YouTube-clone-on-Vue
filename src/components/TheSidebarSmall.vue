@@ -1,5 +1,5 @@
 <template>
-  <aside class="min-h-screen xl:hidden md:block hidden overflow-auto fixed top-0 pt-14 bg-white z-20">
+  <aside :class="classes">
     <section>
       <ul>
         <li>
@@ -39,7 +39,20 @@
 
 <script>
 export default {
-  name: "TheSidebarSmall"
+  name: "TheSidebarSmall",
+
+  props: {
+    isOpen: Boolean,
+  },
+
+  computed: {
+    classes() {
+      return [
+        this.isOpen ? 'md:block' : 'hidden',
+        'min-h-screen', 'overflow-auto', 'fixed', 'top-0', 'pt-14', 'bg-white', 'z-20'
+      ]
+    }
+  }
 }
 </script>
 

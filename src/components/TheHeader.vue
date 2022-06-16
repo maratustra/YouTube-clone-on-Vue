@@ -3,7 +3,7 @@
     <div class="lg:w-1/4 flex">
       <div class="flex items-center xl:w-64 xl:bg-white pl-4">
         <button
-            @click="$emit('openMobileSidebar')"
+            @click="$emit('toggleSidebar')"
             class="mr-3 sm:ml-2 sm:mr-6 focus:outline-none"
         >
           <base-icon name="menu" />
@@ -49,7 +49,7 @@ export default {
   name: "TheHeader",
   components: {BaseIcon, ButtonLogin, TheSearch, LogoMain, TheDropdownSettings, TheDropdownApps},
   emits: {
-    openMobileSidebar: null,
+    toggleSidebar: null,
   },
 }
 </script>
