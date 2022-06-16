@@ -7,7 +7,7 @@
       leave-active-class="transition-opacity ease-linear duration-200"
       leave-to-class="opacity-0"
   >
-    <the-sidebar-mobile-overlay @click="isOpen = false" v-show="isOpen" />
+    <the-sidebar-mobile-overlay @click="$emit('close')" v-show="isOpen" />
   </transition>
 
   <transition
@@ -18,9 +18,17 @@
       leave-active-class="transition ease-in-out duration-200 transform"
       leave-to-class="-translate-x-full"
   >
-    <aside v-show="isOpen" class="w-64 max-h-screen overflow-auto bg-white fixed z-40">
+<!-- aside не является html элементом, к которому может быть применен фокус по-умолчанию
+ поэтому устанавилваем фокус с помощью tabindex -->
+    <aside
+        v-show="isOpen"
+        ref="mobileSidebar"
+        @keydown.esc="$emit('close')"
+        tabindex="-1"
+        class="w-64 max-h-screen overflow-auto bg-white fixed z-40 outline-none"
+    >
       <section class="sticky top-0 flex items-center p-4 border-b bg-white">
-        <button @click="isOpen = false" class="ml-2 mr-6">
+        <button @click="$emit('close')" class="ml-2 mr-6 focus:outline-none">
           <base-icon name="menu" />
         </button>
         <logo-main />
@@ -44,9 +52,17 @@ export default {
     LogoMain,
     SidebarContent
   },
-  data() {
-    return {
-      isOpen: true,
+  props: {
+    isOpen: Boolean,
+  },
+  emits: {
+    close: null,
+  },
+
+  watch: {
+    isOpen() {
+      // подождать, пока Vue полностью обновит html шаблон на основании обновленных внешних свойств
+      this.$nextTick(() => this.isOpen && this.$refs.mobileSidebar.focus())
     }
   }
 }

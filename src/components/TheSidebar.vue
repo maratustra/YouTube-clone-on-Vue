@@ -1,5 +1,7 @@
 <template>
-  <sidebar-content></sidebar-content>
+  <aside class="xl:block w-64 max-h-screen overflow-auto fixed top-12 bg-white z-20">
+    <sidebar-content />
+  </aside>
 </template>
 
 <script>

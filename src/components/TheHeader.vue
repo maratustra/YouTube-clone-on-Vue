@@ -2,7 +2,10 @@
   <header class="flex justify-between fixed z-30 w-full">
     <div class="lg:w-1/4 flex">
       <div class="flex items-center xl:w-64 xl:bg-white pl-4">
-        <button class="mr-3 sm:ml-2 sm:mr-6 focus:outline-none">
+        <button
+            @click="$emit('openMobileSidebar')"
+            class="mr-3 sm:ml-2 sm:mr-6 focus:outline-none"
+        >
           <base-icon name="menu" />
         </button>
         <logo-main />
@@ -44,7 +47,10 @@ import BaseIcon from "./BaseIcon.vue";
 
 export default {
   name: "TheHeader",
-  components: {BaseIcon, ButtonLogin, TheSearch, LogoMain, TheDropdownSettings, TheDropdownApps}
+  components: {BaseIcon, ButtonLogin, TheSearch, LogoMain, TheDropdownSettings, TheDropdownApps},
+  emits: {
+    openMobileSidebar: null,
+  },
 }
 </script>
 
