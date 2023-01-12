@@ -1,33 +1,55 @@
 <template>
-  <div class="absolute top-9 right-0 w-72 opacity-0 group-hover:opacity-100 bg-white border border-t-0">
-    <section class="py-2 border-b">
-      <ul>
-        <dropdown-settings-list-item
-          v-for="listItem in listItems.slice(0, listItems.length - 1)"
-          :key="listItem.label"
-          :label="listItem.label"
-          :icon="listItem.icon"
-          :with-sub-menu="listItem.withSubMenu"
-        />
-      </ul>
-    </section>
-    <section class="py-2">
-      <ul>
-        <dropdown-settings-list-item :label="listItems[8].label" :with-sub-menu="listItems[8].withSubMenu" />
-      </ul>
-    </section>
+  <div>
+    <button
+        @click="isOpen = !isOpen"
+        class="relative p-2 focus-outline-none"
+    >
+      <base-icon name="dotsVertical" class="w-5 h-5" />
+    </button>
+    <transition
+        enter-active-class="transition ease-out duration-100"
+        enter-from-class="transition opacity-0 scale-95"
+        enter-to-class="transform opacity-100 scale-100"
+        leave-active-class="transition ease-in duration-75"
+        leave-from-class="transform opacity-100 scale-100"
+        leave-to-class="transform opacity-0 scale-95"
+    >
+      <div
+          v-show="isOpen"
+          class="absolute top-9 right-0 w-72 bg-white border border-t-0"
+      >
+        <section class="py-2 border-b">
+          <ul>
+            <dropdown-settings-list-item
+              v-for="listItem in listItems.slice(0, listItems.length - 1)"
+              :key="listItem.label"
+              :label="listItem.label"
+              :icon="listItem.icon"
+              :with-sub-menu="listItem.withSubMenu"
+            />
+          </ul>
+        </section>
+        <section class="py-2">
+          <ul>
+            <dropdown-settings-list-item :label="listItems[8].label" :with-sub-menu="listItems[8].withSubMenu" />
+          </ul>
+        </section>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 import DropdownSettingsListItem from "@/components/DropdownSettingsListItem.vue"
+import BaseIcon from "@/components/BaseIcon.vue"
 
 export default {
   name: "TheDropdownSettings",
-  components: {DropdownSettingsListItem},
+  components: {DropdownSettingsListItem, BaseIcon},
 
   data() {
     return {
+      isOpen: false,
       listItems: [
         {
           label: "Appearance: Light",
@@ -76,8 +98,15 @@ export default {
         },
       ]
     }
-  }
+  },
 
+  mounted() {
+    window.addEventListener('click', event => {
+      if (!this.$el.contains(event.target)) {
+        this.isOpen = false
+      }
+    })
+  }
 }
 </script>
 

@@ -24,14 +24,8 @@
       <button class="sm:hidden p-2">
         <base-icon name="search" class="w-5 h-5" />
       </button>
-      <button class="relative group p-2 focus-outline-none">
-        <base-icon name="viewGrid" class="w-5 h-5" />
-        <the-dropdown-apps />
-      </button>
-      <button class="relative group p-2 focus-outline-none">
-        <base-icon name="dotsVertical" class="w-5 h-5" />
-        <the-dropdown-settings />
-      </button>
+      <the-dropdown-apps />
+      <the-dropdown-settings />
       <button-login />
     </div>
   </header>
